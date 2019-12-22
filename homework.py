@@ -67,33 +67,18 @@ def lowest_pressure(path=r'C:\Users\Ted\Desktop\地面观测数据',place='徐�
         i = i + 1
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_lp = lps[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_lp = lps[num:num + n]
     plt.figure(figsize=(11,5))  # 创建绘图对象
     plt.plot(the_times,the_lp,"b--",linewidth=1)  # 在当前绘图对象绘图，蓝色虚线，宽线度
     plt.xlabel("Time")
@@ -133,33 +118,18 @@ def highest_pressure(path=r'C:\Users\Ted\Desktop\地面观测数据',place='徐�
         i = i + 1
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hps[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hps[num:num + n]
     if contrast:
         if t:
             return the_times
@@ -218,7 +188,7 @@ def highest_temperature(path=r'C:\Users\Ted\Desktop\地面观测数据',place='�
         i = i+24
     shuju2 = sheet1.col_values(2)
     del shuju2[0]
-    hts = []  # 用hps存储 “日最高气温”
+    hts = []  
     for ht in shuju2:
         if len(str(ht)) > 0:
             hts.append(ht)
@@ -230,33 +200,18 @@ def highest_temperature(path=r'C:\Users\Ted\Desktop\地面观测数据',place='�
 
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hts[num:num+yue[month]]
+   m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hts[num:num + n]
     if contrast:
         if t:
             return the_times
@@ -297,7 +252,7 @@ def lowest_temperature(path=r'C:\Users\Ted\Desktop\地面观测数据',place='�
         i = i+24
     shuju2 = sheet1.col_values(4)
     del shuju2[0]
-    hts = []  # 用hps存储 “日最高气温”
+    hts = []  
     for ht in shuju2:
         if len(str(ht)) > 0:
             hts.append(ht)
@@ -308,33 +263,18 @@ def lowest_temperature(path=r'C:\Users\Ted\Desktop\地面观测数据',place='�
         i = i + 1
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hts[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hts[num:num + n]
     plt.figure(figsize=(8,4))  # 创建绘图对象
     plt.plot(the_times,the_hp,"b--",linewidth=1)  # 在当前绘图对象绘图，蓝色虚线，宽线度
     plt.xlabel("Time")
@@ -470,33 +410,18 @@ def l_g_t(path=r'C:\Users\Ted\Desktop\地面观测数据', place='徐州', month
         i = i + 1
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hps[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hps[num:num + n]
     if contrast:
         if t:
             return the_times
@@ -547,33 +472,18 @@ def h_g_t(path=r'C:\Users\Ted\Desktop\地面观测数据', place='徐州', month
         i = i + 1
     data_1 = str(month) + '/1 '
     num = xuhao[data_1]
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hps[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hps[num:num + n]
     if contrast:
         if t:
             return the_times
@@ -657,34 +567,18 @@ def lowest_humidity(path=r'C:\Users\Ted\Desktop\地面观测数据', place='徐�
     data_1 = str(month) + '/1 '
     #第一天对应的索引为
     num = xuhao[data_1]
-    #2009到2010年每个月份对应的总天数
-    yue = {}
-    yue['2009/01'] = 31
-    yue['2009/02'] = 28
-    yue['2009/03'] = 31
-    yue['2009/04'] = 30
-    yue['2009/05'] = 31
-    yue['2009/06'] = 30
-    yue['2009/07'] = 31
-    yue['2009/08'] = 31
-    yue['2009/09'] = 30
-    yue['2009/10'] = 31
-    yue['2009/11'] = 30
-    yue['2009/12'] = 31
-    yue['2010/01'] = 31
-    yue['2010/02'] = 28
-    yue['2010/03'] = 31
-    yue['2010/04'] = 30
-    yue['2010/05'] = 31
-    yue['2010/06'] = 30
-    yue['2010/07'] = 31
-    yue['2010/08'] = 31
-    yue['2010/09'] = 30
-    yue['2010/10'] = 31
-    yue['2010/11'] = 30
-    yue['2010/12'] = 31
-    the_times = times[num:num+yue[month]]
-    the_hp = hps[num:num+yue[month]]
+    m = int(month[5:7])
+    if m == 2:
+        n = 28
+    elif m == 8:
+        n = 31
+    elif m % 2:
+        n = 31
+    else:
+        n = 30
+
+    the_times = times[num:num + n]
+    the_hp = hps[num:num + n]
     if contrast:
         if t:
             return the_times
